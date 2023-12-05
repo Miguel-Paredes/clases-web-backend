@@ -138,7 +138,10 @@ app.get('/about',(req,res)=>{
     res.send("Sobre nosotros")
 })
 
-
+app.use((req, res)=>{
+    // Mensaje de error cuando ingresan a una ruta que no exite
+    res.send("404 - Not Found")
+})
 // Iniciar el servidor en el puerto 3000
 app.listen(3000)
 

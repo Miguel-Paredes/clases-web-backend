@@ -134,6 +134,9 @@ app.get('/',(req,res)=>{
 app.get('/dashboard',(req,res)=>{
     res.send("Bienvenido - Usuario")
 })
+app.get('/about',(req,res)=>{
+    res.send("Sobre nosotros")
+})
 
 
 // Iniciar el servidor en el puerto 3000

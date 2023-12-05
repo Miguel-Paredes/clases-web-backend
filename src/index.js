@@ -106,26 +106,35 @@ app.use(express.json())
 // })
 
 
-// ruta publica
-app.get('/entrada',(req,res)=>{
-    res.send("Entrada al local")
+// // ruta publica
+// app.get('/entrada',(req,res)=>{
+//     res.send("Entrada al local")
+// })
+
+// // ruta privada
+// // Crear un niddleware
+// app.use((req,res,next)=>{
+//     const {email, password} = req.body
+//     if (email === "os.miguelparedes@gmail.com" && password === "12345"){
+//         next()
+//     }else{
+//         res.send("Usuario no registrado")
+//     }
+// })
+
+// app.get('/pedido',(req,res)=>{
+//     res.send(`Bienvenido - ${req.body.email}- Listo para tomar su orden`)
+
+// })
+
+
+app.get('/',(req,res)=>{
+    res.send("Lading page")
+})
+app.get('/dashboard',(req,res)=>{
+    res.send("Bienvenido - Usuario")
 })
 
-// ruta privada
-// Crear un niddleware
-app.use((req,res,next)=>{
-    const {email, password} = req.body
-    if (email === "os.miguelparedes@gmail.com" && password === "12345"){
-        next()
-    }else{
-        res.send("Usuario no registrado")
-    }
-})
-
-app.get('/pedido',(req,res)=>{
-    res.send(`Bienvenido - ${req.body.email}- Listo para tomar su orden`)
-
-})
 
 // Iniciar el servidor en el puerto 3000
 app.listen(3000)

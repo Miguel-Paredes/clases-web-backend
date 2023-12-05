@@ -87,24 +87,45 @@ app.use(express.json())
 //     })
 // })
 
-// Utilizar un motor de plantillas
-app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
+// // Utilizar un motor de plantillas
+// app.engine('handlebars', engine());
+// app.set('view engine', 'handlebars');
 
-// Ubicacion del directorio views
-app.set('views', './src/views');
+// // Ubicacion del directorio views
+// app.set('views', './src/views');
 
-app.get('/hamburguesa/vegana',(req,res)=>{
-    res.render('home')
+// app.get('/hamburguesa/vegana',(req,res)=>{
+//     res.render('home')
+// })
+// app.get('/hamburguesa/about',(req,res)=>{
+//     res.render('about')
+// })
+
+// app.get('/hamburguesa/main',(req,res)=>{
+//     res.render('./layouts/main')
+// })
+
+
+// ruta publica
+app.get('/entrada',(req,res)=>{
+    res.send("Entrada al local")
 })
-app.get('/hamburguesa/about',(req,res)=>{
-    res.render('about')
+
+// ruta privada
+// Crear un niddleware
+app.use((req,res,next)=>{
+    const {email, password} = req.body
+    if (email === "os.miguelparedes@gmail.com" && password === "12345"){
+        next()
+    }else{
+        res.send("Usuario no registrado")
+    }
 })
 
-app.get('/hamburguesa/main',(req,res)=>{
-    res.render('./layouts/main')
-})
+app.get('/pedido',(req,res)=>{
+    res.send(`Bienvenido - ${req.body.email}- Listo para tomar su orden`)
 
+})
 
 // Iniciar el servidor en el puerto 3000
 app.listen(3000)
